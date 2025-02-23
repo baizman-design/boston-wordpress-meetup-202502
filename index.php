@@ -11,3 +11,8 @@ $logfile = 'http-requests.log';
 
 // for error_log(). sends output to a file.
 $logfile_type = 3;
+
+// more logic and data validation:
+// + prevent requests from certain domains (could use .htaccess, too)
+// + prevent "open" access to this domain / URL
+// + pass a plugin or theme slug via a query string and ensure it's a valid asset
