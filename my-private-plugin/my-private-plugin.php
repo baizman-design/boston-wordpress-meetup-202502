@@ -36,4 +36,19 @@ function check_for_updates ( $update, $plugin_data, $plugin_file, $locales ) {
 		$curl_args,
 	);
 
+	// is this an error?
+	if ( is_wp_error ( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) || empty ( wp_remote_retrieve_body( $response ) ) ) {
+		return $update;
+	}
+
+	// decode the JSON and convert it to an array.
+	$json_response = json_decode(wp_remote_retrieve_body( $response ), true);
+
+	// return the response.
+	if ( ! empty( $json_response['my-private-plugin'] ) ) {
+		return $json_response['my-private-plugin'];
+	} else {
+		return $update;
+	}
+
 }
