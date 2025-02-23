@@ -29,3 +29,13 @@ error_log( sprintf ('%1$s: %2$s',
 	$logfile_type,
 	$logfile
 );
+
+// create an array with the plugin slug as the key.
+$response['my-private-plugin'] = [
+	'name' => 'My Private Plugin',
+	'slug' => 'my-private-plugin',
+	'package' => sprintf('https://%1$s/%2$s', $_SERVER['HTTP_HOST'], $zip_archive), // URL of the ZIP file.
+	'version' => $new_version,
+	'autoupdate' => 'true',
+	// ...more properties here...
+];
