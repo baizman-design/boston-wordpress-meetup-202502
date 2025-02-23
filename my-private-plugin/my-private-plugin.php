@@ -16,3 +16,10 @@ if (! $plugin_metadata['Update URI'] ) {
 	// do nothing.
 	return;
 }
+
+// dynamic filter.
+// https://developer.wordpress.org/reference/hooks/update_plugins_hostname/
+add_filter( 'update_plugins_private-repository.baizmandesign.com', 'check_for_updates', 10, 4 );
+function check_for_updates ( $update, $plugin_data, $plugin_file, $locales ) {
+
+}
