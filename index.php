@@ -39,3 +39,7 @@ $response['my-private-plugin'] = [
 	'autoupdate' => 'true',
 	// ...more properties here...
 ];
+
+// set correct MIME type.
+header( 'Content-Type: application/json' );
+echo json_encode( $response, JSON_UNESCAPED_SLASHES ); // don't escape "/".
