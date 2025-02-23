@@ -22,4 +22,18 @@ if (! $plugin_metadata['Update URI'] ) {
 add_filter( 'update_plugins_private-repository.baizmandesign.com', 'check_for_updates', 10, 4 );
 function check_for_updates ( $update, $plugin_data, $plugin_file, $locales ) {
 
+	$curl_args = [
+		'timeout' => 10,
+		'headers' => [ 'Accept' => 'application/json', ],
+		// disable ssl certificate verification for local hostname.
+		'sslverify' => false,
+	];
+
+	$private_repository_url = 'https://private-repository.baizmandesign.com';
+
+	$response = wp_remote_get(
+		$private_repository_url,
+		$curl_args,
+	);
+
 }
