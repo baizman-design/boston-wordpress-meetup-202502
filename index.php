@@ -16,3 +16,16 @@ $logfile_type = 3;
 // + prevent requests from certain domains (could use .htaccess, too)
 // + prevent "open" access to this domain / URL
 // + pass a plugin or theme slug via a query string and ensure it's a valid asset
+
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+// log all http requests to a file.
+$message = sprintf( 'Request from %s', $user_agent ) . PHP_EOL;
+$timestamp = date('Y.m.d H.i');
+error_log( sprintf ('%1$s: %2$s',
+	$timestamp,
+	$message
+	),
+	$logfile_type,
+	$logfile
+);
